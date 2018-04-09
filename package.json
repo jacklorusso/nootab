@@ -1,0 +1,12 @@
+{
+  "name": "nootab",
+  "version": "0.0.1",
+  "description": "nootab replaces your new tab page with a minimalist notepad",
+  "scripts": {
+    "dev": "webextension-toolbox dev",
+    "build": "webextension-toolbox build"
+  },
+  "devDependencies": {
+    "webextension-toolbox": "latest"
+  }
+}

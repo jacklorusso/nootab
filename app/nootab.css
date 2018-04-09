@@ -1,0 +1,52 @@
+:root {
+  --background-color: #252525;
+  --text-color: #fff;
+  --link-color: #4fa3ef;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+a {
+  color: var(--link-color);
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 6rem);
+  appearance: none;
+  font: inherit;
+  border: none;
+  outline: none;
+  color: inherit;
+  background: transparent;
+  resize: none;
+}
+
+button[data-theme] {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.25rem;
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  font-size: 0;
+  background: transparent;
+  outline: 0;
+  cursor: pointer;
+}
