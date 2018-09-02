@@ -5,25 +5,33 @@
   <meta charset="utf-8" />
   <title>New Tab</title>
   <link rel="stylesheet" type="text/css" href="./nootab.css">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
 </head>
 
 <body>
   <main>
-    <textarea placeholder="Your deepest thoughts go here. Or your shopping list, whatever works."></textarea>
+    <textarea id="notepad" placeholder="Your deepest thoughts go here. Or your shopping list, whatever works."></textarea>
   </main>
-  <section class="theme-editor">
-    <section class="predefined-themes">
-      <button data-theme="black" style="background-color: #010101">
-        black
-      </button>
-      <button data-theme="blue" style="background-color: #3f51b5">
-        blue
-      </button>
-      <button data-theme="white" style="background-color: white">
-        white
-      </button>
-    </section>
-    <script src="./scripts/nootab.js"></script>
+
+  <footer>
+    <fieldset>
+      <legend class="lowercase">Preferences</legend>
+
+      <label class="lowercase" for="background">Background color:</label>
+      <input type="color" id="background-color" />
+
+      <label class="lowercase" for="text">Text color:</label>
+      <input type="color" id="text-color" />
+
+      <label class="lowercase" for="font-family">Font:</label>
+      <input type="text" id="font-family" />
+
+      <label class="lowercase" for="font-size">Font size:</label>
+      <input type="range" id="font-size" min="80" max="300" />
+    </fieldset>
+  </footer>
+
+  <script src="./scripts/nootab.js"></script>
 </body>
 
 </html>

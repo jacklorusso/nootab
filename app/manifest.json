@@ -10,7 +10,7 @@
     "128": "images/icon-128.png"
   },
   "background": {
-    "scripts": ["scripts/background.js"]
+    "scripts": ["scripts/nootab.js"]
   },
   "chrome_url_overrides": {
     "newtab": "/nootab.html"

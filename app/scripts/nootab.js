@@ -1,55 +1,56 @@
-const setValue = (property, value) => {
+let notepad = document.getElementById("notepad");
+let backgroundColorPicker = document.getElementById("background-color");
+let textColorPicker = document.getElementById("text-color");
+let fontFamilyInput = document.getElementById("font-family");
+let fontSizeSlider = document.getElementById("font-size");
+
+// sty
+const setCustomProperty = (property, value) => {
   document.documentElement.style.setProperty(`--${property}`, value);
 };
 
-const setValueFromLocalStorage = property => {
+const setCustomPropertyFromLocalStorage = property => {
   let value = localStorage.getItem(property);
-  setValue(property, value);
-};
-
-const setTheme = options => {
-  for (let option of Object.keys(options)) {
-    const property = option;
-    const value = options[option];
-
-    setValue(property, value);
-    localStorage.setItem(property, value);
-  }
+  setCustomProperty(property, value);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  setValueFromLocalStorage("background-color");
-  setValueFromLocalStorage("text-color");
-  setValueFromLocalStorage("link-color");
+  setCustomPropertyFromLocalStorage("background-color");
+  setCustomPropertyFromLocalStorage("text-color");
+  setCustomPropertyFromLocalStorage("font-family");
+  setCustomPropertyFromLocalStorage("font-size");
 });
 
-const dataThemeButtons = document.querySelectorAll("[data-theme]");
-for (let i = 0; i < dataThemeButtons.length; i++) {
-  dataThemeButtons[i].addEventListener("click", () => {
-    const theme = dataThemeButtons[i].dataset.theme;
+// if there is nothing in localStorage, placeholder text will be displayed
+notepad.value = localStorage.getItem("notepad");
 
-    switch (theme) {
-      case "black":
-        setTheme({
-          "background-color": "#010101",
-          "text-color": "#ffffff",
-          "accent-color": "#ff5252"
-        });
-        return;
-      case "blue":
-        setTheme({
-          "background-color": "#3f51b5",
-          "text-color": "#ffffff",
-          "accent-color": "#4fa3ef"
-        });
-        return;
-      case "white":
-        setTheme({
-          "background-color": "#ffffff",
-          "text-color": "#222222",
-          "accent-color": "#ff5252"
-        });
-        return;
-    }
-  });
-}
+// set the value of the inputs to whatever is in localStorage. Falls back to the value attribute in html
+backgroundColorPicker.value = localStorage.getItem("background-color") || "#";
+textColorPicker.value = localStorage.getItem("text-color");
+fontFamilyInput.value = localStorage.getItem("font-family") || "IBM Plex Mono";
+fontSizeSlider.value = localStorage.getItem("font-size");
+
+// Event listeners
+notepad.addEventListener("input", function(e) {
+  localStorage.setItem("notepad", e.target.value);
+});
+
+backgroundColorPicker.addEventListener("input", function(e) {
+  setCustomProperty("background-color", e.target.value);
+  localStorage.setItem("background-color", e.target.value);
+});
+
+textColorPicker.addEventListener("input", function(e) {
+  setCustomProperty("text-color", e.target.value);
+  localStorage.setItem("text-color", e.target.value);
+});
+
+fontFamilyInput.addEventListener("input", function(e) {
+  setCustomProperty("font-family", e.target.value);
+  localStorage.setItem("font-family", e.target.value);
+});
+
+fontSizeSlider.addEventListener("input", function(e) {
+  setCustomProperty("font-size", e.target.value + "%");
+  localStorage.setItem("font-size", e.target.value + "%");
+});
